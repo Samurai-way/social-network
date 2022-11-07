@@ -35,11 +35,11 @@ function App() {
     if (!id) {
         id = (24872).toString()
     }
-
+    console.log(id)
     const dispatch = useDispatch()
     const initialized = useAppSelector(state => state.app.initialized)
 
-    // @ts-ignore
+
     useEffect(() => {
         // @ts-ignore
         dispatch(loginUserThunk())
@@ -51,20 +51,21 @@ function App() {
         dispatch(initializedThunk())
     }, [])
 
-    // if (!initialized) {
-    //     return <Preloader/>
-    // }
+    if (!initialized) {
+        return <Preloader/>
+    }
+
 
     return (
         <div className="app-wrapper">
-            <Header/>
+            <Header id={id}/>
             <div className={"app-wrapper-content"}>
                 <Suspense fallback={<Preloader/>}>
                 <Routes>
                     <Route path={'404'} element={<div style={style}>404 :( not found</div>}/>
                     <Route path={'*'} element={<Navigate to={'404'}/>}/>
                     <Route path={'/messages'} element={<Dialogs/>}/>
-                    <Route path={'/profile/:id'} element={<Profile/>}/>
+                    <Route path={'/profile/:id'} element={<Profile isOwner={!!id}/>}/>
                     <Route path={'/users'} element={<UsersContainer/>}/>
                     <Route path={'/login'} element={<Login/>}/>
                 </Routes>
