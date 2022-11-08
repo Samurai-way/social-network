@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Samurai-way.github.io/social-network",
   "dependencies": {
+    "@emailjs/browser": "^3.9.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.10.9",

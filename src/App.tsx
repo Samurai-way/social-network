@@ -9,6 +9,7 @@ import {useAppSelector} from "./redux/hooks";
 import {Preloader} from "./components/common/preloader/Preloader";
 import {loginUserThunk} from "./redux/header-reducer";
 import {Header} from "./components/Header/Header";
+import {News} from "./components/News/News";
 
 
 const Dialogs = lazy(() =>
@@ -35,7 +36,6 @@ function App() {
     if (!id) {
         id = (24872).toString()
     }
-    console.log(id)
     const dispatch = useDispatch()
     const initialized = useAppSelector(state => state.app.initialized)
 
@@ -68,6 +68,7 @@ function App() {
                     <Route path={'/profile/:id'} element={<Profile isOwner={!!id}/>}/>
                     <Route path={'/users'} element={<UsersContainer/>}/>
                     <Route path={'/login'} element={<Login/>}/>
+                    <Route path={'/news'} element={<News/>}/>
                 </Routes>
                 </Suspense>
             </div>
